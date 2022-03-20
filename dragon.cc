@@ -8,6 +8,7 @@
                 the owner & instructor! Thanks!
 Code Integration : Tarun Govind Kesavamurthi
 *************************************************************/
+#include "cache.h"
 #include <assert.h>
 #include <cstdio>
 #include <stdio.h>
@@ -33,17 +34,61 @@ void Dragon::PrWrDir(ulong addr, int processor_number) {}
 // Section ends here. edit the functions in the section below
 //-------------------------------------------------------------
 
-void Dragon::PrRd(ulong addr, int processor_number) {}
+void Dragon::PrRd(ulong addr, int processor_number) {
+  reads++;
+  current_cycle++;
+  cache_line *line = find_line(addr);
 
-void Dragon::PrWr(ulong addr, int processor_number) {}
+  if (line == NULL) {
+    // Read Miss
+    read_misses++;
+    cache_line *newline = allocate_line(addr);
+    bus_reads++;
+    sendBusRd(addr, processor_number);
+    int count = sharers(addr);
+    if (count) {
+      cache2cache++;
+      newline->set_state(Sc);
+    } else {
+      memory_transactions++;
+      newline->set_state(E);
+    }
+  }
+  cache_state state;
+  state = line->get_state();
+  switch (state) {
+  case E:
+  case Sc:
+  case Sm:
+  case M:
+    update_LRU(line);
+  default:
+    break;
+  }
+}
 
-void Dragon::BusRd(ulong addr) {}
+void Dragon::PrWr(ulong addr, int processor_number) {
+  // LOL
 
-void Dragon::BusRdX(ulong addr) {}
+}
 
-void Dragon::BusUpgr(ulong addr) {}
+void Dragon::BusRd(ulong addr) {
+  // LOL
+}
 
-void Dragon::BusWr(ulong addr) {}
+void Dragon::BusRdX(ulong addr) {
+  // LOL
+}
+
+void Dragon::BusUpgr(ulong addr) {
+  // LOL
+}
+
+void Dragon::BusWr(ulong addr) {
+  // LOL
+}
 //}
 
-bool Dragon::writeback_needed(cache_state state) {}
+bool Dragon::writeback_needed(cache_state state) {
+  // LOL
+}
