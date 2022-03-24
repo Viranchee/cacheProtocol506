@@ -39,7 +39,7 @@ def add_numbers_in_file(fileName, outputFilePrefix):
         # Add newline
         f.write('\n')
         for key, value in totals.items():
-            f.write(key + ':\t\t' + str(int(value)) + '\n')
+            f.write(key + ':\t\t' + str(value) + '\n')
         # Add 3 newlines
         f.write('\n' * 3)
 
