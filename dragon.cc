@@ -1,16 +1,14 @@
-/************************************************************
+/********
                         Course          :       CSC506
                         Source          :       dragon.cc
                         Instructor      :       Ed Gehringer
                         Email Id        :       efg@ncsu.edu
 ------------------------------------------------------------
-        © Please do not replicate this code without consulting
+        Â©️ Please do not replicate this code without consulting
                 the owner & instructor! Thanks!
 Code Integration : Tarun Govind Kesavamurthi
-*************************************************************/
-#include "cache.h"
+*******/
 #include <assert.h>
-#include <cstdio>
 #include <stdio.h>
 #include <stdlib.h>
 using namespace std;
@@ -35,17 +33,16 @@ void Dragon::PrWrDir(ulong addr, int processor_number) {}
 //-------------------------------------------------------------
 
 void Dragon::PrRd(ulong addr, int processor_number) {
+  cache_state state;
   reads++;
   current_cycle++;
   cache_line *line = find_line(addr);
-
   if (line == NULL) {
-    // Read Miss
     read_misses++;
     cache_line *newline = allocate_line(addr);
     bus_reads++;
     sendBusRd(addr, processor_number);
-    int count = sharers_exclude(addr, processor_number);
+    int count = sharers(addr);
     if (count) {
       cache2cache++;
       newline->set_state(Sc);
@@ -53,127 +50,136 @@ void Dragon::PrRd(ulong addr, int processor_number) {
       memory_transactions++;
       newline->set_state(E);
     }
-    return;
-  }
-  cache_state state = line->get_state();
-  switch (state) {
-  case E:
-  case Sc:
-  case Sm:
-  case M:
-    update_LRU(line);
-  default:
-    break;
+  } else {
+    state = line->get_state();
+    if (state == Sm) {
+      update_LRU(line);
+    } else if (state == Sc) {
+      update_LRU(line);
+    } else if (state == M) {
+      update_LRU(line);
+    } else if (state == E) {
+      update_LRU(line);
+    }
   }
 }
 
 void Dragon::PrWr(ulong addr, int processor_number) {
-  writes++;
+  cache_state state;
   current_cycle++;
+  writes++;
   cache_line *line = find_line(addr);
   if (line == NULL) {
     write_misses++;
     cache_line *newline = allocate_line(addr);
-    int count = sharers_exclude(addr, processor_number);
+    int count = sharers(addr);
     if (count) {
+      sendBusRd(addr, processor_number);
       cache2cache++;
-      bus_reads++;
-      sendBusRd(addr, processor_number);
-      bus_writes++;
-      sendBusWr(addr, processor_number);
-      newline->set_state(Sm);
-    } else {
-      bus_reads++;
       memory_transactions++;
+      newline->set_state(Sm);
+      bus_writes++;
+      bus_upgrades++;
+    } else {
       sendBusRd(addr, processor_number);
+      memory_transactions++;
+      bus_reads++;
       newline->set_state(M);
     }
-    return;
-  }
-  cache_state state = line->get_state();
-  switch (state) {
-  case E: {
-    line->set_state(M);
-    break;
-  }
-  case M: {
-    update_LRU(line);
-    break;
-  }
-  case Sm: {
-    update_LRU(line);
-    sendBusWr(addr, processor_number);
-    bus_writes++;
-    int sharedLine =
-        sharers_exclude(addr, processor_number); // CHECK Condition to be 1 or 0
-    if (!sharedLine) {
+  } else {
+    state = line->get_state();
+    int count = sharers(addr);
+    if (state == Sm) {
+      if (count) {
+        update_LRU(line);
+        bus_upgrades++;
+        bus_writes++;
+        sendBusUpgr(addr, processor_number);
+      } else {
+        line->set_state(M);
+        bus_upgrades++;
+        sendBusUpgr(addr, processor_number);
+      }
+    }
+
+    else if (state == Sc) {
+      if (count) {
+        line->set_state(Sm);
+        update_LRU(line);
+        bus_upgrades++;
+        sendBusUpgr(addr, processor_number);
+      }
+    } else if (state == M) {
+      update_LRU(line);
+    } else if (state == E) {
+      update_LRU(line);
       line->set_state(M);
     }
-    break;
-  }
-  case Sc: {
-    bool sharedLine = sharers(addr) > 1;
-    if (sharedLine) {
-      line->set_state(Sm);
-    } else {
-      line->set_state(M);
-    }
-    update_LRU(line);
-    break;
-  }
-  default:
-    break;
   }
 }
 
 void Dragon::BusRd(ulong addr) {
-  cache_line *line = find_line(addr);
   cache_state state;
-  if (line) {
+  cache_line *line = find_line(addr);
+  if (line != NULL) {
     state = line->get_state();
-    switch (state) {
-    case E: {
+    if (state == E) {
       line->set_state(Sc);
       cache2cache++;
-      break;
     }
-    case M: {
-      line->set_state(Sm);
+    if (state == M) {
       cache2cache++;
-      break;
+      line->set_state(Sm);
     }
-    default:
-      break;
+    if (state == Sm) {
+      memory_transactions++;
+      flushes++;
     }
   }
 }
 
-void Dragon::BusRdX(ulong addr) {
-  // LOL
-}
+void Dragon::BusRdX(ulong addr) {}
 
 void Dragon::BusUpgr(ulong addr) {
-  // LOL
+
+  cache_state state;
+  cache_line *line = find_line(addr);
+  if (line != NULL) {
+    if (state == Sm) {
+      line->set_state(Sc);
+      //   ++;//redo
+    } else if (state == Sc) {
+      update_LRU(line);
+      bus_upgrades++;
+      memory_transactions++;
+    }
+  }
 }
 
 void Dragon::BusWr(ulong addr) {
-  cache_line *line = find_line(addr);
   cache_state state;
-  if (line) {
-    state = line->get_state();
-    switch (state) {
-    case Sm: {
-      line->set_state(Sc);
-      cache2cache++;
-      break;
-    }
-    default:
-      break;
-    }
+  cache_line *line = find_line(addr);
+  // if (line != NULL) {
+  state = line->get_state();
+  if (state == E) {
+    line->set_state(Sc);
+  } else if (state == Sc) {
+    update_LRU(line);
+  } else if (state == Sm) {
+    //   ++;
+  } else if (state == M) {
+    //     ++;
+    line->set_state(Sm);
+    //  }
   }
 }
 //}
 
 bool Dragon::writeback_needed(cache_state state) {
-  // LOL
+
+  if (state == Sm) { // edit this function to return the correct boolean value
+    return true;
+  } else {
+    return false;
+  }
 }
