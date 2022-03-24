@@ -9,7 +9,7 @@
 *************************************************************/
 #include "cache.h"
 class MSI : public Cache {
-public:
+  public:
   MSI(int s, int a, int b, int p, int pn) : Cache(s, a, b, p, pn){};
   ~MSI(){};
   void PrRd(ulong addr, int processor_number);

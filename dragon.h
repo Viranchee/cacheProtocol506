@@ -10,7 +10,7 @@ Code Integration : Tarun Govind Kesavamurthi
 *************************************************************/
 #include "cache.h"
 class Dragon : public Cache {
-public:
+  public:
   Dragon(int s, int a, int b, int p, int pn) : Cache(s, a, b, p, pn){};
   ~Dragon(){};
   void PrRd(ulong addr, int processor_number);
