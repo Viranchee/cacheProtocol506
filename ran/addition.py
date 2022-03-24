@@ -5,7 +5,7 @@ files = os.listdir()
 txt_files = list(filter(lambda x: x.endswith('.txt'), files))
 sorted_files = sorted(txt_files)
 
-def add_numbers_in_file(fileName, outputFile):
+def add_numbers_in_file(fileName, outputFilePrefix):
     # Dictionary to store Key Value pairs
     initial_lines = []
     totals = {}
@@ -33,6 +33,7 @@ def add_numbers_in_file(fileName, outputFile):
     initial_lines[4] = initial_lines[4].replace('\t', '\t\t')
     initial_lines[5] = initial_lines[5].replace('\t', '\t\t')
     # Append initial_line, totals to outputFile
+    outputFile = outputFilePrefix + file
     with open(outputFile, 'a') as f:
         f.writelines(initial_lines)
         # Add newline
@@ -45,8 +46,8 @@ def add_numbers_in_file(fileName, outputFile):
     initial_lines = [] 
     totals = {} 
 
-# add_numbers_in_file(txt_files[0], 'output.txt')
+
 
 # Call add_numbers_in_file for each txt file
 for file in sorted(txt_files):
-    add_numbers_in_file(file, 'output.txt')
+    add_numbers_in_file(file, 'out/out')
