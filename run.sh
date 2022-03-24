@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Run the program
-
+chmod +x *.sh simulate_cache*
 # Arguments: Cache Size, Cache Associativity, Block Size, Number of Threads, Protocol
 runAll() {
     echo "Cache Size: $1, CacheAssoc: $2, Block Size: $3"
@@ -52,7 +52,7 @@ varyCacheSize() {
 varyAssociativity() {
     echo "Varying Associativity"
     # Associativity: 1way 2way 4way
-    runAll 256 1 64
+    # runAll 256 1 64
     runAll 256 2 64
     runAll 256 4 64
 }
@@ -61,11 +61,11 @@ varyBlockSize() {
     echo "Varying Block Size"
     # Block Size: 32 64 128 256
     runAll 256 1 32
-    runAll 256 1 64
+    # runAll 256 1 64
     runAll 256 1 128
     runAll 256 1 256
 }
 
-varyCacheSize
+# varyCacheSize # Complete
 varyAssociativity
 varyBlockSize
