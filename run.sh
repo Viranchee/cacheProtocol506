@@ -67,5 +67,5 @@ varyBlockSize() {
 }
 
 # varyCacheSize # Complete
-varyAssociativity
+# varyAssociativity
 varyBlockSize
