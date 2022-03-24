@@ -1,0 +1,263 @@
+===== SP15 506 BUS BASED CACHE Configuration =====
+L1_SIZE:		256
+L1_ASSOC:		4
+L1_BLOCKSIZE:		64
+NUMBER OF PROCESSORS:	16
+COHERENCE PROTOCOL:	MOSI 
+TRACE FILE:		/afs/eos.ncsu.edu/lockers/workspace/csc/CSC506-1/trace/swaptions_truncated
+============ Simulation results (Cache 0) ============ 
+1 . number of reads:                      2580
+2 . number of read misses:                1265
+3 . number of writes:                     2615
+4 . number of write misses:               841
+5 . total miss rate:                      0.405390
+6 . number of writebacks:                 1072
+7 . number of memory transactions:        3168
+8 . number of cache-to-cache transfers:   10
+9 . number of interventions:              29
+10. number of invalidations:              25
+11. number of flushes:                    29
+12. number of BusRds issued:              1265
+13. number of BusRdXs issued:             841
+14. number of BusUpgrs issued:            252
+15. number of BusWrs issued:              0
+============ Simulation results (Cache 1) ============ 
+1 . number of reads:                      18010101
+2 . number of read misses:                8261116
+3 . number of writes:                     5126705
+4 . number of write misses:               2032268
+5 . total miss rate:                      0.444892
+6 . number of writebacks:                 2634876
+7 . number of memory transactions:        12706983
+8 . number of cache-to-cache transfers:   221277
+9 . number of interventions:              82516
+10. number of invalidations:              211476
+11. number of flushes:                    224530
+12. number of BusRds issued:              8261116
+13. number of BusRdXs issued:             2032268
+14. number of BusUpgrs issued:            646196
+15. number of BusWrs issued:              0
+============ Simulation results (Cache 2) ============ 
+1 . number of reads:                      17455201
+2 . number of read misses:                7931430
+3 . number of writes:                     4965052
+4 . number of write misses:               1927037
+5 . total miss rate:                      0.439713
+6 . number of writebacks:                 2514452
+7 . number of memory transactions:        12229820
+8 . number of cache-to-cache transfers:   143099
+9 . number of interventions:              65290
+10. number of invalidations:              129331
+11. number of flushes:                    142337
+12. number of BusRds issued:              7931430
+13. number of BusRdXs issued:             1927037
+14. number of BusUpgrs issued:            623268
+15. number of BusWrs issued:              0
+============ Simulation results (Cache 3) ============ 
+1 . number of reads:                      5603794
+2 . number of read misses:                2589364
+3 . number of writes:                     1597675
+4 . number of write misses:               625647
+5 . total miss rate:                      0.446438
+6 . number of writebacks:                 814623
+7 . number of memory transactions:        3966086
+8 . number of cache-to-cache transfers:   63548
+9 . number of interventions:              26414
+10. number of invalidations:              61086
+11. number of flushes:                    65698
+12. number of BusRds issued:              2589364
+13. number of BusRdXs issued:             625647
+14. number of BusUpgrs issued:            202503
+15. number of BusWrs issued:              0
+============ Simulation results (Cache 4) ============ 
+1 . number of reads:                      5595186
+2 . number of read misses:                2589958
+3 . number of writes:                     1592506
+4 . number of write misses:               636060
+5 . total miss rate:                      0.448825
+6 . number of writebacks:                 821675
+7 . number of memory transactions:        3966719
+8 . number of cache-to-cache transfers:   80974
+9 . number of interventions:              30605
+10. number of invalidations:              78642
+11. number of flushes:                    83052
+12. number of BusRds issued:              2589958
+13. number of BusRdXs issued:             636060
+14. number of BusUpgrs issued:            201083
+15. number of BusWrs issued:              0
+============ Simulation results (Cache 5) ============ 
+1 . number of reads:                      5594622
+2 . number of read misses:                2570177
+3 . number of writes:                     1591768
+4 . number of write misses:               641272
+5 . total miss rate:                      0.446879
+6 . number of writebacks:                 826360
+7 . number of memory transactions:        3957280
+8 . number of cache-to-cache transfers:   80529
+9 . number of interventions:              29887
+10. number of invalidations:              74555
+11. number of flushes:                    78964
+12. number of BusRds issued:              2570177
+13. number of BusRdXs issued:             641272
+14. number of BusUpgrs issued:            200656
+15. number of BusWrs issued:              0
+============ Simulation results (Cache 6) ============ 
+1 . number of reads:                      18011769
+2 . number of read misses:                8257677
+3 . number of writes:                     5128428
+4 . number of write misses:               2029284
+5 . total miss rate:                      0.444549
+6 . number of writebacks:                 2626255
+7 . number of memory transactions:        12686765
+8 . number of cache-to-cache transfers:   226451
+9 . number of interventions:              83709
+10. number of invalidations:              220988
+11. number of flushes:                    230370
+12. number of BusRds issued:              8257677
+13. number of BusRdXs issued:             2029284
+14. number of BusUpgrs issued:            641293
+15. number of BusWrs issued:              0
+============ Simulation results (Cache 7) ============ 
+1 . number of reads:                      17991402
+2 . number of read misses:                8166241
+3 . number of writes:                     5121878
+4 . number of write misses:               2002311
+5 . total miss rate:                      0.439944
+6 . number of writebacks:                 2599402
+7 . number of memory transactions:        12594846
+8 . number of cache-to-cache transfers:   173108
+9 . number of interventions:              72073
+10. number of invalidations:              163848
+11. number of flushes:                    174534
+12. number of BusRds issued:              8166241
+13. number of BusRdXs issued:             2002311
+14. number of BusUpgrs issued:            636758
+15. number of BusWrs issued:              0
+============ Simulation results (Cache 8) ============ 
+1 . number of reads:                      18020064
+2 . number of read misses:                8240108
+3 . number of writes:                     5129876
+4 . number of write misses:               2031205
+5 . total miss rate:                      0.443686
+6 . number of writebacks:                 2635841
+7 . number of memory transactions:        12694851
+8 . number of cache-to-cache transfers:   212303
+9 . number of interventions:              79422
+10. number of invalidations:              206891
+11. number of flushes:                    219560
+12. number of BusRds issued:              8240108
+13. number of BusRdXs issued:             2031205
+14. number of BusUpgrs issued:            645537
+15. number of BusWrs issued:              0
+============ Simulation results (Cache 9) ============ 
+1 . number of reads:                      18018280
+2 . number of read misses:                8213857
+3 . number of writes:                     5129962
+4 . number of write misses:               2034936
+5 . total miss rate:                      0.442746
+6 . number of writebacks:                 2638273
+7 . number of memory transactions:        12675697
+8 . number of cache-to-cache transfers:   211369
+9 . number of interventions:              78039
+10. number of invalidations:              199499
+11. number of flushes:                    211961
+12. number of BusRds issued:              8213857
+13. number of BusRdXs issued:             2034936
+14. number of BusUpgrs issued:            642870
+15. number of BusWrs issued:              0
+============ Simulation results (Cache 10) ============ 
+1 . number of reads:                      18010221
+2 . number of read misses:                8218761
+3 . number of writes:                     5124752
+4 . number of write misses:               2024188
+5 . total miss rate:                      0.442747
+6 . number of writebacks:                 2620520
+7 . number of memory transactions:        12653498
+8 . number of cache-to-cache transfers:   209971
+9 . number of interventions:              78576
+10. number of invalidations:              185433
+11. number of flushes:                    198039
+12. number of BusRds issued:              8218761
+13. number of BusRdXs issued:             2024188
+14. number of BusUpgrs issued:            638435
+15. number of BusWrs issued:              0
+============ Simulation results (Cache 11) ============ 
+1 . number of reads:                      17929505
+2 . number of read misses:                8088265
+3 . number of writes:                     5104657
+4 . number of write misses:               1967861
+5 . total miss rate:                      0.436574
+6 . number of writebacks:                 2572390
+7 . number of memory transactions:        12506359
+8 . number of cache-to-cache transfers:   122157
+9 . number of interventions:              56570
+10. number of invalidations:              109286
+11. number of flushes:                    115114
+12. number of BusRds issued:              8088265
+13. number of BusRdXs issued:             1967861
+14. number of BusUpgrs issued:            636347
+15. number of BusWrs issued:              0
+============ Simulation results (Cache 12) ============ 
+1 . number of reads:                      17571527
+2 . number of read misses:                8002191
+3 . number of writes:                     5003049
+4 . number of write misses:               1982372
+5 . total miss rate:                      0.442292
+6 . number of writebacks:                 2565430
+7 . number of memory transactions:        12354574
+8 . number of cache-to-cache transfers:   195419
+9 . number of interventions:              75218
+10. number of invalidations:              192335
+11. number of flushes:                    205041
+12. number of BusRds issued:              8002191
+13. number of BusRdXs issued:             1982372
+14. number of BusUpgrs issued:            621284
+15. number of BusWrs issued:              0
+============ Simulation results (Cache 13) ============ 
+1 . number of reads:                      17952911
+2 . number of read misses:                8188153
+3 . number of writes:                     5108336
+4 . number of write misses:               1977677
+5 . total miss rate:                      0.440819
+6 . number of writebacks:                 2578956
+7 . number of memory transactions:        12576015
+8 . number of cache-to-cache transfers:   168771
+9 . number of interventions:              70128
+10. number of invalidations:              150661
+11. number of flushes:                    157245
+12. number of BusRds issued:              8188153
+13. number of BusRdXs issued:             1977677
+14. number of BusUpgrs issued:            639336
+15. number of BusWrs issued:              0
+============ Simulation results (Cache 14) ============ 
+1 . number of reads:                      17514859
+2 . number of read misses:                7923518
+3 . number of writes:                     4982051
+4 . number of write misses:               1937384
+5 . total miss rate:                      0.438323
+6 . number of writebacks:                 2520890
+7 . number of memory transactions:        12236603
+8 . number of cache-to-cache transfers:   145189
+9 . number of interventions:              63866
+10. number of invalidations:              133973
+11. number of flushes:                    142808
+12. number of BusRds issued:              7923518
+13. number of BusRdXs issued:             1937384
+14. number of BusUpgrs issued:            619328
+15. number of BusWrs issued:              0
+============ Simulation results (Cache 15) ============ 
+1 . number of reads:                      18005431
+2 . number of read misses:                8187613
+3 . number of writes:                     5123913
+4 . number of write misses:               2014764
+5 . total miss rate:                      0.441101
+6 . number of writebacks:                 2613240
+7 . number of memory transactions:        12634557
+8 . number of cache-to-cache transfers:   181060
+9 . number of interventions:              72993
+10. number of invalidations:              175175
+11. number of flushes:                    185953
+12. number of BusRds issued:              8187613
+13. number of BusRdXs issued:             2014764
+14. number of BusUpgrs issued:            638254
+15. number of BusWrs issued:              0
