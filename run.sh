@@ -60,7 +60,7 @@ varyAssociativity() {
 varyBlockSize() {
     echo "Varying Block Size"
     # Block Size: 32 64 128 256
-    runAll 256 1 32
+    # runAll 256 1 32
     # runAll 256 1 64
     runAll 256 1 128
     runAll 256 1 256
